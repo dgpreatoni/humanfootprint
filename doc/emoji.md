@@ -1,5 +1,6 @@
-meaning	emoji	text
-info	information_source	:information_source:
+| meaning | emoji | text |
+|---------|-------|------|
+| info | information_source |	:information_source: |
 note	memo	:memo:
 warning	warning	:warning:
 tip	penguin	:penguin:
