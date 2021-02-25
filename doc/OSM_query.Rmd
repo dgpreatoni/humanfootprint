@@ -4,7 +4,7 @@ output: html_notebook
 ---
 Proof-of-concept for OSM feature extraction (and preprocessing) in R.
 
-References: [https://dominicroye.github.io/en/2018/accessing-openstreetmap-data-with-r/] 
+References: (https://dominicroye.github.io/en/2018/accessing-openstreetmap-data-with-r/) 
 
 ```{r, init}
 library(tidyverse)
@@ -13,4 +13,17 @@ library(sf)
 library(ggmap)
 ```
 
-s
+We need to ask OSM servers what features are available, so that we can filter out. The `available_features()` function returns a list of available OSM features that have different tags. Feature names and possible tags are kept up-to date at the [OSM wiki](https://wiki.openstreetmap.org/wiki/Map_features) (be prepared, is rather longish and well documented!).
+
+In our case wFor example, the feature shop contains several tags among others supermarket, fishing, books, etc.
+
+#the first five features
+head(available_features())
+## [1] "4wd only"  "abandoned" "abutters"  "access"    "addr"      "addr:city"
+#amenities
+head(available_tags("amenity"))
+## [1] "animal_boarding" "animal_shelter"  "arts_centre"     "atm"            
+## [5] "baby_hatch"      "baking_oven"
+#shops
+head(available_tags("shop"))
+## [1] "agrarian"  "alcohol"   "anime"     "antiques"  "appliance" "art"
