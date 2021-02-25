@@ -15,15 +15,51 @@ library(ggmap)
 
 We need to ask OSM servers what features are available, so that we can filter out. The `available_features()` function returns a list of available OSM features that have different tags. Feature names and possible tags are kept up-to date at the [OSM wiki](https://wiki.openstreetmap.org/wiki/Map_features) (be prepared, is rather longish and well documented!).
 
-In our case wFor example, the feature shop contains several tags among others supermarket, fishing, books, etc.
+In our case, we need "anything road", so let's ask... 
 
-#the first five features
-head(available_features())
-## [1] "4wd only"  "abandoned" "abutters"  "access"    "addr"      "addr:city"
-#amenities
-head(available_tags("amenity"))
-## [1] "animal_boarding" "animal_shelter"  "arts_centre"     "atm"            
-## [5] "baby_hatch"      "baking_oven"
-#shops
-head(available_tags("shop"))
-## [1] "agrarian"  "alcohol"   "anime"     "antiques"  "appliance" "art"
+```{r get_available_features}
+# have a look at what's available
+available_features()
+```
+Whoa.
+
+Lotsa stuff here. Reading [the wiki](https://wiki.openstreetmap.org/wiki/Highways), we can be safe asking for "`highway`" 
+
+```{r get_available_tags}
+# have a look at highways
+available_tags("highway")
+```
+Seems good.
+Looks like we need "`highway`" indeed. We also have to define some spatial boundaries, since we just want to deal with -- say -- a slice of Northern Italy. Fix that bounding box issue, theh back to tamper with OSM.
+
+:question: :construction: Note that in `osmdata` one explicits bounding boxes by place names, whereas real mapmakers use real bounding boxes. So much for the Muggles. Well'fix that later.
+
+```{r make_bb}
+# we have an AOI polygon in BASE, I used the boundaries of Piedmont and Lombardy, plus a 10 km buffer, then reprojected from 23032 into 4326.
+AOI <- st_read(dsn="BASE", layer="AOI-NW-ITA_4326")
+
+# tis is the standard osmdata mechanism, what if we have an extent?
+bb <- getbb("Piemonte")
+background.map <- get_map(bb, maptype = "toner-background")
+ggmap(background.map)
+
+```
+So far, so good, we can (albeit in a silly way) hook up a part of the world. Back to `highway`, now.
+
+```{r get_highways}
+# note the use of tidyverse piping
+# note 2 set a timeout value high enough to opq
+q <- getbb("Piemonte") %>% opq(timeout=50000) %>% add_osm_feature("highway")
+roads <- osmdata_sf(q) # this takes ages
+
+# well, try a plot
+ggmap(background.map) + geom_sf(data=roads$osm_points,
+                                inherit.aes = FALSE,
+          colour = "#238443",
+          fill = "#004529",
+          alpha = .5,
+          size = 4,
+          shape = 21)+
+  labs(x = "", y = "")
+
+```
