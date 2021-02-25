@@ -19,7 +19,7 @@ As per Sanderson et al. (2002), the basic recipe calls for four different proxie
 Note the total lack of natural elements such as pristine areas, forests, etc.
 
 Basic datasets are:
-  - population density, possibly gridded
+  - :check: population density, possibly gridded
   - land cover/land transformation
     - built up areas
     - settlements
@@ -46,6 +46,7 @@ In the following paragraphs the available data sources are described along with 
 
 ## :heavy_check_mark: Human population pressure
 Gallego F.J., (2010) people per cell, 100 m resolution, `http://cmshare.eea.europa.eu/s/NAPoXyePo4J3o5X/download`. Description at `https://data.europa.eu/euodp/en/data/dataset/jrc-ghsl-ghs_pop_eurostat_europe_r2016a/resource/46f53786-71f5-41da-ab62-f8c9dc7f0d1b`
+
 
 ## Road network
   - EuroGeographic (one of the official European GIS data provider) released as an opendata product the EuroGlobalMap dataset: `https://eurogeographics.org/maps-for-europe/open-data/topographic-data/`
