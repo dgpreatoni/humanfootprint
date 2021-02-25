@@ -9,7 +9,7 @@
 | con |	heavy_minus_sign | :heavy_minus_sign: |
 | error |	x	| :x: |
 | correct |	heavy_check_mark |	:heavy_check_mark: |
-| question (unanswered) |	:question: |
+| question (unanswered) |	`:question:` | :question: |
 | question (resolved) |	grey_question	| :grey_question: |
 | wip | construction | :construction: |
 | careful | eyes | :eyes: |
