@@ -31,11 +31,25 @@ In particular, Sanderson et al. (2002, Table 1) resorted to 9 datasets publicly 
 
 Also note that in most of the literature, an arbitrary scoring system is attached to the features listed above, in order to rank a pixel on the final footprint map.
 
-A revised, regional scale version of the scoring system has to be devided, too. 
+A revised, regional scale version of the scoring system has to be devised, too. 
 
 ### Possible sources (Italy)
+**Note:** it is more convenient use data at the EU scale level, so that no harmonisation will be needed. 
+ 
 ISTAT census data, vector, by census unit `https://www.istat.it/it/archivio/104317`
 This should be spatially corrected with built up areas, see `http://foss4g-it2018.gfoss.it/data/20_febbrario/3_archeo/Baiocchi_Lelo_Vatore_FOSS4G-IT_2018.pdf` for an example on a small area.
+
+
+
+### Possible sources (EU)
+In the following paragraphs the available data sources are described along with the basic procedure (at least at the conceptual level) to preprocess them.
+
+## :heavy_check_mark: Human population pressure
+Gallego F.J., (2010) people per cell, 100 m resolution, `http://cmshare.eea.europa.eu/s/NAPoXyePo4J3o5X/download`. Description at `https://data.europa.eu/euodp/en/data/dataset/jrc-ghsl-ghs_pop_eurostat_europe_r2016a/resource/46f53786-71f5-41da-ab62-f8c9dc7f0d1b`
+
+## Road network
+  - EuroGeographic (one of the official European GIS data provider) released as an opendata product the EuroGlobalMap dataset: `https://eurogeographics.org/maps-for-europe/open-data/topographic-data/`
+  - OpenStreetmap requires preprocessing but perhaps is the finest high-resolution coverage possible. Nightly OpenStreetMap Europe snapshots available on GeoFabrik `http://download.geofabrik.de/osm/`, see `http://www.gdal.org/ogr/ogr_sql.html` for inspiraiton on how to query. Warning: we're in the tenth of GB size region.
 
 CORINE Level IV
 
@@ -44,17 +58,6 @@ Road network, from OSM/GeFabrik (see below)
 Railways network, from OSM/GeFabrik (see below)
 
 Power lines? Do they exist?
-
-
-
-### Possible sources (EU)
-## Human populaiton pressure
-Gallego F.J., (2010) people per cell, 100 m resolution, `http://cmshare.eea.europa.eu/s/NAPoXyePo4J3o5X/download`. Description at `https://data.europa.eu/euodp/en/data/dataset/jrc-ghsl-ghs_pop_eurostat_europe_r2016a/resource/46f53786-71f5-41da-ab62-f8c9dc7f0d1b`
-
-## Road network
-  - EuroGeographic (one of the official European GIS data provider) released as an opendata product the EuroGlobalMap dataset: `https://eurogeographics.org/maps-for-europe/open-data/topographic-data/`
-  - OpenStreetmap requires preprocessing but perhaps is the finest high-resolution coverage possible. Nightly OpenStreetMap Europe snapshots available on GeoFabrik `http://download.geofabrik.de/osm/`, see `http://www.gdal.org/ogr/ogr_sql.html` for inspiraiton on how to query. Warning: we're in the tenth of GB size region.
-
 
 
 
