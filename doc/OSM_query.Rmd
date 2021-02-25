@@ -1,0 +1,16 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+Proof-of-concept for OSM feature extraction (and preprocessing) in R.
+
+References: [https://dominicroye.github.io/en/2018/accessing-openstreetmap-data-with-r/] 
+
+```{r, init}
+library(tidyverse)
+library(osmdata)
+library(sf)
+library(ggmap)
+```
+
+s
