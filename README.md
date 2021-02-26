@@ -87,11 +87,9 @@ Gallego F.J., (2010) people per cell, 100 m resolution,
 at `https://data.europa.eu/euodp/en/data/dataset/jrc-ghsl-ghs_pop_eurostat_europe_r2016a/resource/46f53786-71f5-41da-ab62-f8c9dc7f0d1b`
 This dataset is indeed "ready-made", possibly it will be resampled (but not downscaled) at 30 or 10 m.
 
-## Road network
-
--   EuroGeographic (one of the official European GIS data provider)
-    released as an opendata product the EuroGlobalMap dataset:
-    `https://eurogeographics.org/maps-for-europe/open-data/topographic-data/`
+## :construction: Road network, railways, etc.
+I'm presently trying both direct OSM query and regional data pack download.
+Given the nature of the work, and the potential need for huge volumes (tenths of GB) of data, the most convenient solution seems to be downloading a regional package (e.g. [Europe `pbf`](http://download.geofabrik.de/europe.html) and rework it locally. 
 -   OpenStreetmap requires preprocessing but perhaps is the finest
     high-resolution coverage possible. Nightly OpenStreetMap Europe
     snapshots available on GeoFabrik
@@ -99,9 +97,11 @@ This dataset is indeed "ready-made", possibly it will be resampled (but not down
     inspiration on how to query. Warning: we're in the tenths of GB size
     region.
 
-Road network, from OSM/GeFabrik (see below)
+There are other potential soutces, but for now let's finish proof-of-concept with OSM.
+-   EuroGeographic (one of the official European GIS data provider)
+    released as an opendata product the EuroGlobalMap dataset:
+    `https://eurogeographics.org/maps-for-europe/open-data/topographic-data/`
 
-Railways network, from OSM/GeFabrik (see below)
 
 ## Land cover / Land use
 
