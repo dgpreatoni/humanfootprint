@@ -103,7 +103,7 @@ Given the nature of the work, and the potential need for huge volumes (tenths of
     `http://download.geofabrik.de/osm/`, see [`doc/OSM_queries.Rmd`] for
     inspiration on how to query. Warning: we're in the tenths of GB size
     region. 
-    There's an howto by Konstantin Klemmer on [`r-spatial.org`]{https://www.r-spatial.org/2017/07/14/large_scale_osm_in_r) that is worth trying.
+    There's an howto by Konstantin Klemmer on [`r-spatial.org`](https://www.r-spatial.org/2017/07/14/large_scale_osm_in_r) that is worth trying.
 
 ## Railways network
 
