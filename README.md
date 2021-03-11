@@ -89,19 +89,20 @@ This dataset is indeed "ready-made", possibly it will be resampled (but not down
 
 ## Road network
 
--   EuroGeographic (one of the official European GIS data provider)
+~~-   EuroGeographic (one of the official European GIS data provider)
     released as an opendata product the EuroGlobalMap dataset:
-    `https://eurogeographics.org/maps-for-europe/open-data/topographic-data/`
+    `https://eurogeographics.org/maps-for-europe/open-data/topographic-data/`~~
 -   OpenStreetmap requires preprocessing but perhaps is the finest
     high-resolution coverage possible. Nightly OpenStreetMap Europe
     snapshots available on GeoFabrik
     `http://download.geofabrik.de/osm/`, see [`doc/OSM_queries.Rmd`] for
     inspiration on how to query. Warning: we're in the tenths of GB size
-    region.
+    region. 
+    There's an howto by Konstantin Klemmer on [`r-spatial.org`]{https://www.r-spatial.org/2017/07/14/large_scale_osm_in_r) that is worth trying.
 
-Road network, from OSM/GeFabrik (see below)
+## Railways network
 
-Railways network, from OSM/GeFabrik (see below)
+As well, from OSM/GeFabrik (see above).
 
 ## Land cover / Land use
 
