@@ -1,12 +1,14 @@
 ---
 title: "R Notebook"
-output: html_notebook
+output:
+  html_document:
+    df_print: paged
 ---
 Proof-of-concept for OSM feature extraction (and preprocessing) in R.
 
 References: (https://dominicroye.github.io/en/2018/accessing-openstreetmap-data-with-r/) 
 
-```{r, init}
+```{r, setup, include=FALSE}
 library(tidyverse)
 library(osmdata)
 library(sf)
@@ -17,9 +19,9 @@ We need to ask OSM servers what features are available, so that we can filter ou
 
 In our case, we need "anything road", so let's ask... 
 
-```{r get_available_features}
+```{r get_available_features, R.options=list(max.print=10)}
 # have a look at what's available
-available_features()
+print(available_features())
 ```
 Whoa.
 
@@ -29,18 +31,18 @@ Lotsa stuff here. Reading [the wiki](https://wiki.openstreetmap.org/wiki/Highway
 # have a look at highways
 available_tags("highway")
 ```
-Seems good.
+Looks good.
 Looks like we need "`highway`" indeed. We also have to define some spatial boundaries, since we just want to deal with -- say -- a slice of Northern Italy. Fix that bounding box issue, theh back to tamper with OSM.
 
 :question: :construction: Note that in `osmdata` one explicits bounding boxes by place names, whereas real mapmakers use real bounding boxes. So much for the Muggles. Well'fix that later.
 
-```{r make_bb}
+```{r make_bb, R.options=list(max.print=3)}
 # we have an AOI polygon in BASE, I used the boundaries of Piedmont and Lombardy, plus a 10 km buffer, then reprojected from 23032 into 4326.
-AOI <- st_read(dsn="BASE", layer="AOI-NW-ITA_4326")
+AOI <- st_read(dsn="../BASE", layer="AOI-NW-ITA_4326")
 
 # tis is the standard osmdata mechanism, what if we have an extent?
 bb <- getbb("Piemonte")
-background.map <- get_map(bb, maptype = "toner-background")
+background.map <- get_map(bb, maptype="toner-background")
 ggmap(background.map)
 
 ```
@@ -49,7 +51,7 @@ So far, so good, we can (albeit in a silly way) hook up a part of the world. Bac
 ```{r get_highways}
 # note the use of tidyverse piping
 # note 2 set a timeout value high enough to opq
-q <- getbb("Piemonte") %>% opq(timeout=50000) %>% add_osm_feature("highway")
+q <- getbb("Piemonte") %>% opq(timeout=900) %>% add_osm_feature("highway")
 roads <- osmdata_sf(q) # this takes ages
 
 # well, try a plot
